@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Futuristic Red Theme Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Light theme */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 5%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+    
+    /* Red primary theme */
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 84% 70%;
+    --primary-dark: 0 84% 45%;
+    
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+    
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 84% 60%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom futuristic variables */
+    --neon-red: 0 100% 50%;
+    --neon-red-glow: 0 100% 60%;
+    --glass-bg: 0 0% 100% / 0.1;
+    --glass-border: 0 0% 100% / 0.2;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-bg)), hsl(var(--glass-bg)));
+    
+    /* Shadows */
+    --shadow-red: 0 10px 30px hsl(var(--primary) / 0.3);
+    --shadow-red-glow: 0 0 40px hsl(var(--neon-red-glow) / 0.4);
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .dark {
+    /* Dark theme (default) */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 95%;
+    
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 95%;
+    
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 84% 70%;
+    --primary-dark: 0 84% 45%;
+    
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 90%;
+    
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 84% 60%;
+    
+    /* Custom dark variables */
+    --glass-bg: 0 0% 0% / 0.2;
+    --glass-border: 0 0% 100% / 0.1;
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass effect components */
+  .glass-card {
+    @apply backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5 border border-white/20 shadow-2xl;
+  }
+  
+  .glass-nav {
+    @apply backdrop-blur-md bg-background/80 border-b border-border/50;
+  }
+  
+  /* Glow effects */
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  .glow-red-strong {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.7), 0 0 80px hsl(var(--primary) / 0.3);
+  }
+  
+  /* Particle background */
+  .particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Animated text gradient */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Hero button variant */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg;
+    @apply hover:shadow-2xl hover:scale-105 transition-all duration-300;
+    @apply glow-red;
+  }
+  
+  /* Skill bar animations */
+  .skill-bar {
+    @apply h-2 bg-secondary rounded-full overflow-hidden relative;
+  }
+  
+  .skill-progress {
+    @apply h-full bg-gradient-to-r from-primary to-primary-glow rounded-full;
+    @apply animate-pulse;
+    transition: width 2s ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-typing {
+    border-right: 2px solid hsl(var(--primary));
+    animation: typing 3s steps(40) infinite, blink 1s infinite;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(var(--primary) / 0.5); }
+  to { box-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--primary) / 0.4); }
+}
+
+@keyframes typing {
+  0%, 50% { border-right-color: hsl(var(--primary)); }
+  51%, 100% { border-right-color: transparent; }
+}
+
+@keyframes blink {
+  0%, 50% { border-right-color: hsl(var(--primary)); }
+  51%, 100% { border-right-color: transparent; }
+}
+
+@keyframes fadeUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+/* Loading animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
