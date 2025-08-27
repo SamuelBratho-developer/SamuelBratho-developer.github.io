@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=/my-portifolio/">
+    <meta http-equiv="refresh" content="0; url=/">
     <script>
       // GitHub Pages SPA redirect: send 404s back to index with original path in query
       (function() {
-        var redirectUrl = '/my-portifolio/' + (location.search || '') + (location.hash || '');
+        var redirectUrl = '/' + (location.search || '') + (location.hash || '');
         window.location.replace(redirectUrl);
       })();
     </script>
